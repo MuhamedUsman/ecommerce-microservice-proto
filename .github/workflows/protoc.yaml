@@ -28,6 +28,9 @@ jobs:
 
       - name: Generate for Golang
         shell: bash
+        env:
+          GIT_EMAIL: m.usmannadeem3344@gmail.com
+          GIT_USERNAME: Muhammad Usman
         run: |
           chmod +x "${GITHUB_WORKSPACE}/protoc.sh"
           ./protoc.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION }}

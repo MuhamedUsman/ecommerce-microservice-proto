@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 set -e
-USER_EMAIL=$1
-USERNAME=$2
 SERVICE_NAME=$3
 RELEASE_VERSION=$4
 
@@ -20,8 +18,8 @@ go mod init github.com/MuhamedUsman/ecommerce-microservice-proto/golang/"${SERVI
 go mod tidy
 cd ../..
 
-git config --global user.email "${USER_EMAIL}"
-git config --global user.name "${USERNAME}"
+git config --global user.email "${GIT_EMAIL}"
+git config --global user.name "${GIT_USERNAME}"
 (git add . && git commit -am "proto update") || true
 git push -u origin HEAD
 git tag -fa golang/"${SERVICE_NAME}"/"${RELEASE_VERSION}" \
