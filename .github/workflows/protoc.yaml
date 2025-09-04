@@ -27,4 +27,4 @@ jobs:
         shell: bash
         run: |
           chmod +x "${GITHUB_WORKSPACE}/protoc.sh"
-          ./run.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION }}
+          ./protoc.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION }}
