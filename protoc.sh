@@ -22,8 +22,8 @@ git config --global user.email "${GIT_EMAIL}"
 git config --global user.name "${GIT_USERNAME}"
 (git add . && git commit -am "proto update") || true
 git push -u origin HEAD
-git tag -d "${RELEASE_VERSION}"
-git push --delete origin "${RELEASE_VERSION}"
+git tag -d "${RELEASE_VERSION}" || true
+git push --delete origin "${RELEASE_VERSION}" || true
 git tag -fa golang/"${SERVICE_NAME}"/"${RELEASE_VERSION}" \
 -m "golang/${SERVICE_NAME}/${RELEASE_VERSION}"
 git push origin refs/tags/golang/"${SERVICE_NAME}"/"${RELEASE_VERSION}"
