@@ -21,7 +21,6 @@ profile.cov
 # vendor/
 
 # Go workspace file
-golang
 go.work
 go.work.sum
 
