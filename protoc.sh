@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -e
-SERVICE_NAME=$1
-RELEASE_VERSION=$2
+USER_EMAIL=$1
+USERNAME=$2
+SERVICE_NAME=$3
+RELEASE_VERSION=$4
 
 sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
@@ -18,9 +20,10 @@ go mod init github.com/MuhamedUsman/ecommerce-microservice-proto/golang/"${SERVI
 go mod tidy
 cd ../..
 
-git config --global user.email "m.usmannadeem3344@gmail.com"
-git config --global user.name "Muhammad Usman"
+git config --global user.email "${USER_EMAIL}"
+git config --global user.name "${USERNAME}"
 (git add . && git commit -am "proto update") || true
+git push -u origin HEAD
 git tag -fa golang/"${SERVICE_NAME}"/"${RELEASE_VERSION}" \
 -m "golang/${SERVICE_NAME}/${RELEASE_VERSION}"
 git push origin refs/tags/golang/"${SERVICE_NAME}"/"${RELEASE_VERSION}"
